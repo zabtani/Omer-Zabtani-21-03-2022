@@ -1,6 +1,6 @@
 import classes from './App.module.css';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Navigate,
   Route,
   Routes,
@@ -31,11 +31,6 @@ function App() {
         <Routes>
           <Route path="*" element={<Navigate to={Paths.WEATHER} />} />
           <Route path={Paths.HOME} element={<Layout />}>
-            <Route
-              path={Paths.HOME}
-              element={<Navigate to={Paths.WEATHER} />}
-            />
-
             <Route path={Paths.WEATHER} element={<WeatherScreen />} />
             <Route path={Paths.FAVORITES} element={<FavoritesScreen />} />
           </Route>
