@@ -1,5 +1,5 @@
 export enum URLS {
-  BASE_URL = 'http://dataservice.accuweather.com/',
+  BASE_URL = 'https://dataservice.accuweather.com/',
   QUERY = '&q=',
   BASE_PARAMS = '&language=en-us',
   AUTOCOMPLETE = 'locations/v1/cities/autocomplete?',
