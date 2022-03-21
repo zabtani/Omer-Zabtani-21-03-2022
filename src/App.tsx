@@ -29,9 +29,8 @@ function App() {
     <div className={classes.app}>
       <Router>
         <Routes>
-          <Route path="*" element={<Navigate to={Paths.WEATHER} />} />
-          <Route path="/" element={<Layout />}>
-            <Route path="/" element={<Navigate to={Paths.WEATHER} />} />
+          <Route path={Paths.HOME} element={<Layout />}>
+            <Route path="*" element={<Navigate to={Paths.WEATHER} />} />
             <Route path={Paths.WEATHER} element={<WeatherScreen />} />
             <Route path={Paths.FAVORITES} element={<FavoritesScreen />} />
           </Route>
