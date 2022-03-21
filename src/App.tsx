@@ -30,7 +30,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="*" element={<Navigate to={Paths.WEATHER} />} />
-          <Route path={Paths.HOME} element={<Layout />}>
+          <Route path="/" element={<Layout />}>
             <Route path={Paths.WEATHER} element={<WeatherScreen />} />
             <Route path={Paths.FAVORITES} element={<FavoritesScreen />} />
           </Route>
