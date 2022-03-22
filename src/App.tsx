@@ -18,7 +18,7 @@ function App() {
       <Router basename="/">
         <Routes>
           <Route path={Paths.BASE} element={<Layout />}>
-            <Route path={'/'} element={<Navigate to={Paths.WEATHER} />} />
+            <Route path={'*'} element={<Navigate to={Paths.WEATHER} />} />
             <Route path={Paths.WEATHER} element={<WeatherScreen />} />
             <Route path={Paths.FAVORITES} element={<FavoritesScreen />} />
           </Route>
