@@ -15,10 +15,10 @@ function App() {
   useUserLocation();
   return (
     <div className={classes.app}>
-      <Router basename="https://zabtani.github.io/Omer-Zabtani-21-03-2022/">
+      <Router basename="/">
         <Routes>
           <Route path={Paths.BASE} element={<Layout />}>
-            <Route path={'*'} element={<Navigate to={Paths.WEATHER} />} />
+            <Route path={'/'} element={<Navigate to={Paths.WEATHER} />} />
             <Route path={Paths.WEATHER} element={<WeatherScreen />} />
             <Route path={Paths.FAVORITES} element={<FavoritesScreen />} />
           </Route>
