@@ -9,7 +9,7 @@ interface Props {
 
 const LocationResult = ({ location }: Props) => {
   const classes = useStyles();
-  const { city, country, id } = location;
+  const { city, country } = location;
   const { isFavoriteLocation } = useFavoriteCheck({ location });
 
   return (
