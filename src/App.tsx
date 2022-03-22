@@ -17,6 +17,8 @@ function App() {
     <div className={classes.app}>
       <Router basename="/">
         <Routes>
+          <Route path={'*'} element={<Navigate to={Paths.BASE} />} />
+
           <Route path={Paths.BASE} element={<Layout />}>
             <Route path={'/'} element={<Navigate to={Paths.WEATHER} />} />
             <Route path={Paths.WEATHER} element={<WeatherScreen />} />
