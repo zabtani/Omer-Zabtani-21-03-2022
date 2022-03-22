@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
-  fetchCordinatedForecast,
+  fetchCordinatedLocation,
   fetchQueryResult,
 } from '../../api/api-requests';
 import { Location } from '../../interface/interface';
@@ -8,17 +8,17 @@ import { Location } from '../../interface/interface';
 //USER LOCATION BASE ON GEOLOCATION
 export const fetch_user_location = createAsyncThunk(
   'forecast/fetchUserLocation',
-  async (payload: { lat: string; lon: string }, { rejectWithValue }) => {
+  async (payload: { lat: number; lon: number }, { rejectWithValue }) => {
     try {
-      const { data: locationData } = await fetchCordinatedForecast(payload);
+      const { data: locationData } = await fetchCordinatedLocation(payload);
       const userLocation: Location = {
         id: locationData.Key,
-        city: locationData.ParentCity.LocalizedName,
+        city: locationData.LocalizedName,
         country: locationData.Country.LocalizedName,
       };
       return userLocation;
     } catch (err) {
-      return rejectWithValue(err);
+      return rejectWithValue('ERR:forecast/fetchUserLocation');
     }
   }
 );
@@ -38,7 +38,7 @@ export const fetch_location_results = createAsyncThunk(
       });
       return resultLocations;
     } catch (err) {
-      return rejectWithValue(err);
+      return rejectWithValue('ERR:forecast/fetchLocationResults');
     }
   }
 );

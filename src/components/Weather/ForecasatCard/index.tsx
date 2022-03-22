@@ -12,7 +12,7 @@ interface Props {
 const ForecastCard = ({ forecast }: Props) => {
   const { image, city, country, global, week } = forecast;
   const classes = useStyles();
-  
+  console.log(forecast);
   return (
     <GrowAnimation>
       <Card className={classes.card}>

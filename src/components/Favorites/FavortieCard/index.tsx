@@ -1,6 +1,7 @@
 import { CardActionArea, Card } from '@mui/material';
 import { Forecast } from '../../../interface/interface';
 import { useStyles } from './useStyles';
+
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useDispatch } from 'react-redux';
 import { forecastActions } from '../../../redux/forecast/forecast-reducer';

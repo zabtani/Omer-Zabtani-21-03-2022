@@ -7,6 +7,7 @@ import { fetch_location_forecast } from './forecast-actions';
 const initialState: ForecastState = {
   loading: false,
   error: '',
+  favorites: [],
   unit: Units.C,
   currentForecast: null,
 };
@@ -22,6 +23,25 @@ export const forecastSlice = createSlice({
         unit,
       };
     },
+    toggleFavorite: (
+      state,
+      action: { payload: { location: Forecast; isFavoriteLocation: boolean } }
+    ) => {
+      const { location, isFavoriteLocation } = action.payload;
+      let updatedFavorites = [];
+      if (isFavoriteLocation) {
+        updatedFavorites = state.favorites.filter(
+          (favorite: Forecast) => favorite.id !== location.id
+        );
+      } else {
+        updatedFavorites = [...state.favorites, location];
+      }
+      return {
+        ...state,
+        favorites: updatedFavorites,
+      };
+    },
+
     chooseAsCurrent: (state, action: { payload: Forecast }) => {
       const currentForecast = action.payload;
       return {
@@ -29,6 +49,7 @@ export const forecastSlice = createSlice({
         currentForecast,
       };
     },
+
     clearError: (state) => {
       return {
         ...state,

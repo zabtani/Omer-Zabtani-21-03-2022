@@ -9,13 +9,13 @@ export type ForecastState = {
   loading: boolean;
   error: string;
   unit: Units;
+  favorites: Forecast[];
   currentForecast: Forecast | null;
 };
 
 export type LocationState = {
   loading: boolean;
   error: string;
-  favorites: Forecast[];
   userLocationInfo: { location: Location | null; seen: boolean };
   searchResultLocations: Location[];
 };

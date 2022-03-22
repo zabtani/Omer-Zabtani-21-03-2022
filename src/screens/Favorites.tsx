@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
 import Favorites from '../components/Favorites';
 import FadeAnimation from '../components/Layout/Animations/FadeAnimation';
-import { favoriteLocationsSelector } from '../redux/location/location-selector';
+import { favoritesSelector } from '../redux/forecast/forecast-selector';
 
 const FavoritesScreen = () => {
-  const favorites = useSelector(favoriteLocationsSelector);
+  const favorites = useSelector(favoritesSelector);
   return (
     <FadeAnimation>
       <div>

@@ -19,3 +19,7 @@ export const forecastUnitSelector = createSelector(
   forecastStateSelector,
   (state) => state.unit
 );
+export const favoritesSelector = createSelector(
+  forecastStateSelector,
+  (state) => state.favorites
+);

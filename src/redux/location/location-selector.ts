@@ -14,10 +14,7 @@ export const locationSearchResultsSelector = createSelector(
   locationStateSelector,
   (state) => state.searchResultLocations
 );
-export const favoriteLocationsSelector = createSelector(
-  locationStateSelector,
-  (state) => state.favorites
-);
+
 export const userLocationSelector = createSelector(
   locationStateSelector,
   (state) => state.userLocationInfo

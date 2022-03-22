@@ -9,10 +9,11 @@ import {
   locationSearchResultsSelector,
 } from '../../../redux/location/location-selector';
 import { fetch_location_results } from '../../../redux/location/location-actions';
-import { locationActions } from '../../../redux/location/location-reducer';
+
 import { fetch_location_forecast } from '../../../redux/forecast/forecast-actions';
 import { useStyles } from './useStyles';
 import { forecastUnitSelector } from '../../../redux/forecast/forecast-selector';
+import LocationResult from './LocationResult';
 
 const SearchBar = () => {
   const classes = useStyles();
@@ -25,20 +26,20 @@ const SearchBar = () => {
 
   //FETCH LOCATION SUGGESTIONS ON SEARCH
   const searchHandler = (e: any, value: any) => {
+    console.log('d');
     const searchValue = value.trim();
     setInputValue(value ?? '');
-    if (searchValue.length > 2) {
-      dispatch(fetch_location_results(searchValue));
-    } else {
-      dispatch(locationActions.resetSearchResults());
-    }
+
+    const isValidForSearch = searchValue.length > 2;
+    if (inputValue.includes(searchValue) || !isValidForSearch) return;
+
+    dispatch(fetch_location_results(searchValue));
   };
 
   //FETCH FULL FORECAST FOR THE OPTION CLICKED
   const handleLocationChoice = async (location: Location | null) => {
     if (location === null) return;
     dispatch(fetch_location_forecast({ locationData: location, unit }));
-    dispatch(locationActions.resetSearchResults());
   };
 
   return (
@@ -51,17 +52,21 @@ const SearchBar = () => {
       onClose={() => {
         setOpen(false);
       }}
-      isOptionEqualToValue={(location: Location, value) =>
-        location.id === value.id
-      }
       getOptionLabel={(location) => `${location.city}, ${location.country}`}
-      options={locations ? locations : []}
+      options={locations}
       loading={loading}
       inputValue={inputValue}
       onInputChange={(e, value) => searchHandler(e, value)}
       onChange={(e, location: Location | null) =>
         handleLocationChoice(location)
       }
+      renderOption={(props, location) => {
+        return (
+          <span {...props} key={location.id}>
+            <LocationResult location={location} />
+          </span>
+        );
+      }}
       renderInput={(params) => (
         <TextField
           variant="filled"

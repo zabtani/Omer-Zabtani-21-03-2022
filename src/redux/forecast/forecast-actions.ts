@@ -35,7 +35,7 @@ export const fetch_location_forecast = createAsyncThunk(
       };
       return forecast;
     } catch (err) {
-      return rejectWithValue(err);
+      return rejectWithValue('ERR:forecast/fetchLocationForecast');
     }
   }
 );

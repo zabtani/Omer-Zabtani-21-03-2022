@@ -1,7 +1,8 @@
 import { Alert, Snackbar } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Msg from '../../enums/Info';
+import { forecastActions } from '../../redux/forecast/forecast-reducer';
 import { forecastErrorSelector } from '../../redux/forecast/forecast-selector';
 import { locationActions } from '../../redux/location/location-reducer';
 import {
@@ -17,14 +18,22 @@ const AlertSnackBar = () => {
   const dispatch = useDispatch();
 
   //HANDLE THE ERROR SELECTORS
-  useEffect(() => {
-    const handleError = (msg: string) => {
+  const handleError = useCallback(
+    (msg: string) => {
       setAlertReason(msg);
       dispatch(locationActions.clearError());
-    };
+    },
+    [dispatch]
+  );
+  useEffect(() => {
     if (locationError) handleError(Msg.LOCATION_ERR_MSG);
-    if (forecastError) handleError(Msg.SERVER_ERR_MSG);
-  }, [locationError, forecastError, dispatch]);
+    dispatch(locationActions.clearError());
+  }, [locationError, handleError, dispatch]);
+
+  useEffect(() => {
+    if (forecastError) handleError(Msg.FORECAST_ERR_MSG);
+    dispatch(forecastActions.clearError());
+  }, [forecastError, handleError, dispatch]);
 
   //HANDLE WELCOME MSG
   useEffect(() => {

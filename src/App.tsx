@@ -8,29 +8,18 @@ import {
 import Paths from './enums/Paths';
 import FavoritesScreen from './screens/Favorites';
 import WeatherScreen from './screens/Weather';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetch_user_location } from './redux/location/location-actions';
 import Layout from './components/Layout/AppLayout';
+import useUserLocation from './Hooks/useUserLocation';
 
 function App() {
-  const dispatch = useDispatch();
-
-  //ASK FOR USER LOCATION AND FETCH IT IF APPROVED
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      let lat = position.coords.latitude.toString();
-      let lon = position.coords.longitude.toString();
-      dispatch(fetch_user_location({ lat, lon }));
-    });
-  }, [dispatch]);
-
+  useUserLocation();
   return (
     <div className={classes.app}>
       <Router>
         <Routes>
-          <Route path="*" element={<Navigate to={Paths.WEATHER} />} />
-          <Route path={Paths.HOME} element={<Layout />}>
+          <Route path={'/'} element={<Navigate to={Paths.HOME} />} />
+          <Route path={'/'} element={<Layout />}>
+            <Route path={'/*'} element={<Navigate to={Paths.WEATHER} />} />
             <Route path={Paths.WEATHER} element={<WeatherScreen />} />
             <Route path={Paths.FAVORITES} element={<FavoritesScreen />} />
           </Route>

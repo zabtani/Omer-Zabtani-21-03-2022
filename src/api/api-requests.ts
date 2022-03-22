@@ -2,7 +2,7 @@ import axios from 'axios';
 import {
   CONDITIONS_PARAMS,
   CONDITIONS_URL,
-  CORDINATED_FORECAST_URL,
+  CORDINATED_LOCATION_URL,
   DAYS_PARAMS_UNIT_C,
   DAYS_PARAMS_UNIT_F,
   DAYS_URL,
@@ -27,11 +27,11 @@ const unsplash = createApi({
 });
 
 //for the user self location.
-export const fetchCordinatedForecast = async (payload: {
-  lat: string;
-  lon: string;
+export const fetchCordinatedLocation = async (payload: {
+  lat: number;
+  lon: number;
 }): Promise<any> => {
-  const URL = CORDINATED_FORECAST_URL + `&q=${payload.lat},${payload.lon}`;
+  const URL = CORDINATED_LOCATION_URL + `&q=${payload.lat},${payload.lon}`;
   const data = await GET(URL);
   return data;
 };

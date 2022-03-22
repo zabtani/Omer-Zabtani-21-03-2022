@@ -1,54 +1,48 @@
 import { Button, CardActions } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useStyles } from './useStyles';
-import { useDispatch, useSelector } from 'react-redux';
-import { locationActions } from '../../../../redux/location/location-reducer';
+import { useDispatch } from 'react-redux';
 import { Forecast } from '../../../../interface/interface';
-import {
-  favoriteLocationsSelector,
-  userLocationSelector,
-} from '../../../../redux/location/location-selector';
-import { useEffect, useState } from 'react';
+import { forecastActions } from '../../../../redux/forecast/forecast-reducer';
+import useFavoriteCheck from '../../../../Hooks/useFavoriteLocation';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 interface Props {
   locationForecast: Forecast;
 }
 const FavoriteButton = ({ locationForecast }: Props) => {
-  const [isFavorite, setIsFavorite] = useState(false);
-  const favorites = useSelector(favoriteLocationsSelector);
-  const { location: userLocation } = useSelector(userLocationSelector);
   const dispatch = useDispatch();
-  const classes = useStyles();
+  const { id, city, country } = locationForecast;
 
-  //PUSH LOCATION TO FAV ARR IF BUTTON CLICKED
-  useEffect(() => {
-    const isLocationFavorite = (id: string) =>
-      favorites.some((favorite: Forecast) => favorite.id === id);
-
-    if (userLocation && userLocation.city === locationForecast.city) {
-      //API RETURNS  DIFFERENT ID WITH CORDINATED API REQ - SO I CHECK IF USER LOCATION FAV BASE ON THE CITY NAME!
-      setIsFavorite(true);
-      return;
-    }
-    const result = isLocationFavorite(locationForecast.id);
-    setIsFavorite(result);
-  }, [locationForecast, favorites, userLocation]);
+  const { isFavoriteLocation } = useFavoriteCheck({
+    location: { id, city, country },
+  });
+  const classes = useStyles({ isFavoriteLocation });
 
   const handleChoice = () => {
-    setIsFavorite(true);
-    dispatch(locationActions.chooseAsFavorite(locationForecast));
+    dispatch(
+      forecastActions.toggleFavorite({
+        location: locationForecast,
+        isFavoriteLocation,
+      })
+    );
   };
-
+  const deleteIcon = <DeleteIcon color="disabled" />;
+  const addIcon = <AddCircleOutlineIcon color="warning" />;
+  const favIcon = <FavoriteIcon color="warning" />;
   return (
     <CardActions>
       <Button
-        disabled={isFavorite}
         onClick={handleChoice}
         sx={{ position: 'absolute' }}
         className={classes.favButton}
         variant="outlined"
-        startIcon={<FavoriteIcon color="warning" />}
+        endIcon={isFavoriteLocation ? deleteIcon : undefined}
+        startIcon={isFavoriteLocation ? favIcon : addIcon}
       >
-        {isFavorite ? 'Saved' : 'Mark as Favorite'}
+        <div className={classes.text}>
+          <span> {isFavoriteLocation ? 'Remove' : 'Add to favorites '}</span>
+        </div>
       </Button>
     </CardActions>
   );

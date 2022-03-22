@@ -1,5 +1,5 @@
 import { createSlice, SerializedError } from '@reduxjs/toolkit';
-import { Forecast, Location } from '../../interface/interface';
+import { Location } from '../../interface/interface';
 import { LocationState } from '../../interface/redux';
 import {
   fetch_location_results,
@@ -9,7 +9,6 @@ import {
 const initialState: LocationState = {
   loading: false,
   error: '',
-  favorites: [],
   userLocationInfo: { location: null, seen: false },
   searchResultLocations: [],
 };
@@ -22,19 +21,6 @@ export const locationSlice = createSlice({
       return {
         ...state,
         userLocationInfo: { ...state.userLocationInfo, seen: true },
-      };
-    },
-    chooseAsFavorite: (state, action: { payload: Forecast }) => {
-      const chosenFavorite = action.payload;
-      return {
-        ...state,
-        favorites: [...state.favorites, chosenFavorite],
-      };
-    },
-    resetSearchResults: (state) => {
-      return {
-        ...state,
-        searchResultLocations: [],
       };
     },
     clearError: (state) => {
@@ -67,7 +53,10 @@ export const locationSlice = createSlice({
       fetch_location_results.fulfilled,
       (state, action: { payload: Location[] }) => {
         const resultLocations = action.payload;
-        state.searchResultLocations = [...resultLocations];
+        state.searchResultLocations =
+          resultLocations.length > 0
+            ? resultLocations
+            : state.searchResultLocations;
         state.loading = false;
       }
     );
