@@ -4,7 +4,7 @@ interface Props {
 }
 const GrowAnimation = ({ children }: Props) => {
   return (
-    <Grow in={true} timeout={{ enter: 1000 }}>
+    <Grow in={true} timeout={{ enter: 1600 }}>
       {children}
     </Grow>
   );
