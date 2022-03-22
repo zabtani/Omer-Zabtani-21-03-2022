@@ -6,13 +6,15 @@ import { useStyles } from './useStyles';
 import FavoriteButton from './FavoriteButton';
 import GrowAnimation from '../../Layout/Animations/GrowAnimation';
 import ForecastDay from './ForecastDay';
+
 interface Props {
   forecast: Forecast;
 }
+
 const ForecastCard = ({ forecast }: Props) => {
   const { image, city, country, global, week } = forecast;
   const classes = useStyles();
-  console.log(forecast);
+
   return (
     <GrowAnimation>
       <Card className={classes.card}>
@@ -62,5 +64,6 @@ const ForecastCard = ({ forecast }: Props) => {
   );
 };
 export default ForecastCard;
+
 const defaultImageUrl =
   'https://images.unsplash.com/photo-1601383124961-32dfdfc8f88a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80';

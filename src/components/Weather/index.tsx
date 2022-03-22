@@ -13,12 +13,15 @@ const Weather = ({ forecast, loading }: Props) => {
   const classes = useStyles();
 
   let content = <InfoCard text="Choose a City To Get Your Forecast ☂️" />;
+
   if (forecast) {
     content = <ForecastCard forecast={forecast} />;
   }
+
   if (loading) {
     content = <CircularProgress className={classes.loader} size={150} />;
   }
+
   return (
     <div>
       <div className={classes.topContainer}>

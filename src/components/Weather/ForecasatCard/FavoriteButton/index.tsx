@@ -13,7 +13,6 @@ interface Props {
 const FavoriteButton = ({ locationForecast }: Props) => {
   const dispatch = useDispatch();
   const { id, city, country } = locationForecast;
-
   const { isFavoriteLocation } = useFavoriteCheck({
     location: { id, city, country },
   });
@@ -27,9 +26,11 @@ const FavoriteButton = ({ locationForecast }: Props) => {
       })
     );
   };
+
   const deleteIcon = <DeleteIcon color="disabled" />;
   const addIcon = <AddCircleOutlineIcon color="warning" />;
   const favIcon = <FavoriteIcon color="warning" />;
+
   return (
     <CardActions>
       <Button
@@ -41,7 +42,7 @@ const FavoriteButton = ({ locationForecast }: Props) => {
         startIcon={isFavoriteLocation ? favIcon : addIcon}
       >
         <div className={classes.text}>
-          <span> {isFavoriteLocation ? 'Remove' : 'Add to favorites '}</span>
+          <span>Add to favorites</span>
         </div>
       </Button>
     </CardActions>

@@ -19,6 +19,7 @@ const NavigationBar = ({ toggleMode, isLightMode }: Props) => {
     toggleMode,
     isLightMode,
   };
+
   return (
     <AppBar elevation={7} className={classes.appBar} position="static">
       <Container maxWidth="xl">

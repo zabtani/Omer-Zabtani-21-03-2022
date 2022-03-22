@@ -24,19 +24,14 @@ const SearchBar = () => {
   const unit = useSelector(forecastUnitSelector);
   const dispatch = useDispatch();
 
-  //FETCH LOCATION SUGGESTIONS ON SEARCH
   const searchHandler = (e: any, value: any) => {
-    console.log('d');
     const searchValue = value.trim();
     setInputValue(value ?? '');
-
     const isValidForSearch = searchValue.length > 2;
     if (inputValue.includes(searchValue) || !isValidForSearch) return;
-
     dispatch(fetch_location_results(searchValue));
   };
 
-  //FETCH FULL FORECAST FOR THE OPTION CLICKED
   const handleLocationChoice = async (location: Location | null) => {
     if (location === null) return;
     dispatch(fetch_location_forecast({ locationData: location, unit }));
@@ -89,4 +84,5 @@ const SearchBar = () => {
     />
   );
 };
+
 export default SearchBar;

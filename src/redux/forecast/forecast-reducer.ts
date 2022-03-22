@@ -23,6 +23,7 @@ export const forecastSlice = createSlice({
         unit,
       };
     },
+
     toggleFavorite: (
       state,
       action: { payload: { location: Forecast; isFavoriteLocation: boolean } }
@@ -57,7 +58,9 @@ export const forecastSlice = createSlice({
       };
     },
   },
+
   extraReducers: (builder) => {
+    //fetch_location_forecast
     builder.addCase(
       fetch_location_forecast.fulfilled,
       (state, action: { payload: Forecast }) => {
@@ -66,9 +69,11 @@ export const forecastSlice = createSlice({
         state.loading = false;
       }
     );
+
     builder.addCase(fetch_location_forecast.pending, (state) => {
       state.loading = true;
     });
+
     builder.addCase(
       fetch_location_forecast.rejected,
       (state, action: { error: SerializedError }) => {

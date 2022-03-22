@@ -7,6 +7,7 @@ import { useStyles } from './useStyles';
 interface Props {
   day: DayForecast;
 }
+
 const ForecastDay = ({ day }: Props) => {
   const { width } = useWindowDimensions();
   const classes = useStyles();

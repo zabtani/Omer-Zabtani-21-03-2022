@@ -9,6 +9,7 @@ const useUserForecast = () => {
   const userLocation = useSelector(userLocationSelector);
   const unit = useSelector(forecastUnitSelector);
   const dispatch = useDispatch();
+
   useEffect(() => {
     //IF USER GAVE LOCATION, FETCH AND SHOW HIS FORECAST (IF NOT SEEN)
     const shouldFetchUserLocation = !userLocation.seen && userLocation.location;
@@ -20,4 +21,5 @@ const useUserForecast = () => {
     }
   }, [userLocation, unit, dispatch]);
 };
+
 export default useUserForecast;

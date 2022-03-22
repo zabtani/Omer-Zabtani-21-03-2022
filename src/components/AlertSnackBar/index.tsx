@@ -17,7 +17,6 @@ const AlertSnackBar = () => {
   const [alertReason, setAlertReason] = useState('');
   const dispatch = useDispatch();
 
-  //HANDLE THE ERROR SELECTORS
   const handleError = useCallback(
     (msg: string) => {
       setAlertReason(msg);
@@ -25,6 +24,7 @@ const AlertSnackBar = () => {
     },
     [dispatch]
   );
+
   useEffect(() => {
     if (locationError) handleError(Msg.LOCATION_ERR_MSG);
     dispatch(locationActions.clearError());
@@ -35,7 +35,6 @@ const AlertSnackBar = () => {
     dispatch(forecastActions.clearError());
   }, [forecastError, handleError, dispatch]);
 
-  //HANDLE WELCOME MSG
   useEffect(() => {
     if (!userLocation.seen && userLocation.location) {
       setAlertReason(Msg.WELCOME_MSG);

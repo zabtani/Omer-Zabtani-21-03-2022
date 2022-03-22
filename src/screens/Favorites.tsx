@@ -5,6 +5,7 @@ import { favoritesSelector } from '../redux/forecast/forecast-selector';
 
 const FavoritesScreen = () => {
   const favorites = useSelector(favoritesSelector);
+
   return (
     <FadeAnimation>
       <div>

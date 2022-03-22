@@ -13,4 +13,5 @@ const useUserLocation = () => {
     });
   }, [dispatch]);
 };
+
 export default useUserLocation;

@@ -7,6 +7,7 @@ import { forecastUnitSelector } from '../../../redux/forecast/forecast-selector'
 import { useStyles } from './useStyles';
 import fahrenheit from '../../../assets/fahrenheit.svg';
 import celcius from '../../../assets/celcius.svg';
+
 const UnitSwitch = () => {
   const unit = useSelector(forecastUnitSelector);
   const [checked, setChecked] = useState(unit === Units.C);

@@ -1,6 +1,6 @@
 import Paths from '../enums/Paths';
 
-//APP
+//PAGES
 export interface Page {
   path: Paths;
   title: string;
@@ -13,7 +13,7 @@ export interface Location {
   country: string;
 }
 
-//FORECAST (EXTENDS LOCATION)
+//FORECAST
 export interface ForecastBase {
   weatherText: string;
   temperature: string;

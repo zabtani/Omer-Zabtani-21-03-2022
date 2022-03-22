@@ -1,15 +1,16 @@
 import { CardActionArea, Card } from '@mui/material';
 import { Forecast } from '../../../interface/interface';
 import { useStyles } from './useStyles';
-
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useDispatch } from 'react-redux';
 import { forecastActions } from '../../../redux/forecast/forecast-reducer';
 import { useNavigate } from 'react-router-dom';
 import Paths from '../../../enums/Paths';
+
 interface Props {
   favoriteData: Forecast;
 }
+
 const FavoriteCard = ({ favoriteData }: Props) => {
   const { city, country, global } = favoriteData;
   const { temperature, weatherText } = global;

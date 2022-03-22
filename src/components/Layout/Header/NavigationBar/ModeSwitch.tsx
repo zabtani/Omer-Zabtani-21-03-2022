@@ -3,16 +3,19 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import { useState } from 'react';
+
 interface Props {
   isLightMode: boolean;
   toggleMode: () => void;
 }
 const ModeSwitch = ({ isLightMode, toggleMode }: Props) => {
   const [checked, setChecked] = useState(isLightMode);
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     toggleMode();
     setChecked(event.target.checked);
   };
+
   return (
     <FormGroup>
       <FormControlLabel

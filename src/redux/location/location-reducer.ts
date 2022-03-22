@@ -30,7 +30,9 @@ export const locationSlice = createSlice({
       };
     },
   },
+
   extraReducers: (builder) => {
+    //fetch_user_location
     builder.addCase(
       fetch_user_location.fulfilled,
       (state, action: { payload: Location }) => {
@@ -38,9 +40,11 @@ export const locationSlice = createSlice({
         state.loading = false;
       }
     );
+
     builder.addCase(fetch_user_location.pending, (state) => {
       state.loading = true;
     });
+
     builder.addCase(
       fetch_user_location.rejected,
       (state, action: { error: SerializedError }) => {
@@ -48,7 +52,7 @@ export const locationSlice = createSlice({
         state.loading = false;
       }
     );
-
+    //fetch_location_results
     builder.addCase(
       fetch_location_results.fulfilled,
       (state, action: { payload: Location[] }) => {
@@ -60,9 +64,11 @@ export const locationSlice = createSlice({
         state.loading = false;
       }
     );
+
     builder.addCase(fetch_location_results.pending, (state) => {
       state.loading = true;
     });
+
     builder.addCase(
       fetch_location_results.rejected,
       (state, action: { error: SerializedError }) => {
