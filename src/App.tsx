@@ -1,6 +1,6 @@
 import classes from './App.module.css';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Navigate,
   Route,
   Routes,
@@ -15,13 +15,10 @@ function App() {
   useUserLocation();
   return (
     <div className={classes.app}>
-      <Router>
+      <Router basename="/">
         <Routes>
           <Route path={Paths.BASE} element={<Layout />}>
-            <Route
-              path={Paths.BASE}
-              element={<Navigate to={Paths.WEATHER} />}
-            />
+            <Route path={'*'} element={<Navigate to={Paths.WEATHER} />} />
             <Route path={Paths.WEATHER} element={<WeatherScreen />} />
             <Route path={Paths.FAVORITES} element={<FavoritesScreen />} />
           </Route>
