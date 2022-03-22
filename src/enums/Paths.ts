@@ -1,8 +1,8 @@
 enum Paths {
   BASE = '/',
-  HOME = '/',
-  WEATHER = '/weather',
-  FAVORITES = '/favorites',
+  HOME = '/forecast',
+  WEATHER = '/forecast/weather',
+  FAVORITES = '/forecast/favorites',
 }
 
 export default Paths;
