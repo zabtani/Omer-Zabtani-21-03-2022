@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Omer-Zabtani-21-03-2022/static/css/main.a6465fee.css",
-    "main.js": "/Omer-Zabtani-21-03-2022/static/js/main.d44cf067.js",
-    "static/js/787.0f00d04f.chunk.js": "/Omer-Zabtani-21-03-2022/static/js/787.0f00d04f.chunk.js",
-    "static/media/celcius.svg": "/Omer-Zabtani-21-03-2022/static/media/celcius.5c98a4a3775836efc199499c88373451.svg",
-    "static/media/fahrenheit.svg": "/Omer-Zabtani-21-03-2022/static/media/fahrenheit.3a87113aaa8d786a36d9c930475f10b5.svg",
-    "index.html": "/Omer-Zabtani-21-03-2022/index.html",
-    "main.a6465fee.css.map": "/Omer-Zabtani-21-03-2022/static/css/main.a6465fee.css.map",
-    "main.d44cf067.js.map": "/Omer-Zabtani-21-03-2022/static/js/main.d44cf067.js.map",
-    "787.0f00d04f.chunk.js.map": "/Omer-Zabtani-21-03-2022/static/js/787.0f00d04f.chunk.js.map"
+    "main.css": "/weather-forecast/static/css/main.a6465fee.css",
+    "main.js": "/weather-forecast/static/js/main.5ee40f12.js",
+    "static/js/787.0f00d04f.chunk.js": "/weather-forecast/static/js/787.0f00d04f.chunk.js",
+    "static/media/celcius.svg": "/weather-forecast/static/media/celcius.5c98a4a3775836efc199499c88373451.svg",
+    "static/media/fahrenheit.svg": "/weather-forecast/static/media/fahrenheit.3a87113aaa8d786a36d9c930475f10b5.svg",
+    "index.html": "/weather-forecast/index.html",
+    "main.a6465fee.css.map": "/weather-forecast/static/css/main.a6465fee.css.map",
+    "main.5ee40f12.js.map": "/weather-forecast/static/js/main.5ee40f12.js.map",
+    "787.0f00d04f.chunk.js.map": "/weather-forecast/static/js/787.0f00d04f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a6465fee.css",
-    "static/js/main.d44cf067.js"
+    "static/js/main.5ee40f12.js"
   ]
 }
